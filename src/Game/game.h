@@ -1,7 +1,7 @@
+#pragma once
 #include "../config.h"
 #include "../UI/ui.h"
-#include "../shaders/shader.h"
-#include "../Textures/texture.h"
+#include "../Renderer/renderer.h"
 
 struct Game
 {
@@ -14,5 +14,7 @@ struct Game
     UI ui;
     Shader shader; 
     Texture tex;
+    Renderer2D renderer;
+    
     uint VAO, VBO, EBO;
 }; 

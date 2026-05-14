@@ -6,6 +6,7 @@ add_executable( main
     src/glad.c
     src/UI/ui.cpp
     src/Game/game.cpp
+    src/Renderer/renderer.cpp
     src/shaders/shader.cpp
     src/stb_image.cpp
     src/log/log.cpp
