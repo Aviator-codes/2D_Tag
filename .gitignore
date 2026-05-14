@@ -1,0 +1,40 @@
+# Build output directories
+/build/
+/cmake-build-*/
+/bin/
+/out/
+
+# CMake specific files
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+
+# Compiled Object files
+*.o
+*.obj
+*.slo
+*.lo
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Executables
+*.exe
+*.out
+*.app
+
+# IDE and Editor files (VS Code, CLion, etc.)
+.vscode/
+.idea/
+*.user
+*.suo
+*.sln
+
+# Temporary and OS files
+*~
+.DS_Store   
