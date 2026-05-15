@@ -2,5 +2,5 @@
 
 void Player::updatePos(float dt)
 {
-    pos += vel * speed * dt;
+    pos += vel * dt;
 }

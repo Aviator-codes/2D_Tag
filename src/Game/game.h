@@ -23,4 +23,9 @@ struct Game
     uint VAO, VBO, EBO;
 
     Player player;
+
+    const float g = 400.0f;
+    bool viewHitboxes = false;
+    bool viewCenter = false;
+    float groundY = 600.0f;
 }; 

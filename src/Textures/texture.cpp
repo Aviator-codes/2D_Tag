@@ -5,11 +5,11 @@ Texture::Texture( std::string texFilePath, bool flipVertically )
 {
     GLenum format;
     stbi_set_flip_vertically_on_load( flipVertically );
-    std::cout << "Reached texture loader\n";
+    //std::cout << "Reached texture loader\n";
     uint8_t* data = stbi_load( texFilePath.c_str(), &width, &height, &nrChannels, 0 );
-    std::cout << width << ' '
-          << height << ' '
-          << nrChannels << '\n';
+    //std::cout << width << ' '
+    //          << height << ' '
+    //          << nrChannels << '\n';
     glGenTextures( 1, &ID );
     glBindTexture( GL_TEXTURE_2D, ID );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,     GL_REPEAT  );
