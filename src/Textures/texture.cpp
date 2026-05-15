@@ -3,9 +3,13 @@
 Texture::Texture( std::string texFilePath, bool flipVertically )
     : filePath( texFilePath )
 {
-    uint format;
+    GLenum format;
     stbi_set_flip_vertically_on_load( flipVertically );
+    std::cout << "Reached texture loader\n";
     uint8_t* data = stbi_load( texFilePath.c_str(), &width, &height, &nrChannels, 0 );
+    std::cout << width << ' '
+          << height << ' '
+          << nrChannels << '\n';
     glGenTextures( 1, &ID );
     glBindTexture( GL_TEXTURE_2D, ID );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,     GL_REPEAT  );
@@ -26,7 +30,7 @@ Texture::Texture( std::string texFilePath, bool flipVertically )
     }
     else
     {
-        LogError( ("Failed to load texture: " + filePath).c_str() );
+        LogError( std::string("Failed to load texture: ") + filePath );
     }
     stbi_image_free( data );
 }

@@ -31,6 +31,6 @@
 #define FG_BWHITE                   ANSI_ESC "97m"
 
 
-void LogError(const char* Error);
-void LogWarning(const char* Warn);
-void LogPass(const char* Test);
+void LogError(const std::string& Error);
+void LogWarning(const std::string& Warn);
+void LogPass(const std::string& Test);

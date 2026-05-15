@@ -7,11 +7,17 @@ int main(int argc, char** argv)
     game.init();
 
     float dt = 0;
+    double last = glfwGetTime();
     while(!glfwWindowShouldClose(game.ui.window))
     {
-        // TODO: Inputs
-        game.processInput();
         // calculate dt
+        double current = glfwGetTime();
+        dt = current - last;
+        last = current;
+
+        // TODO: Inputs
+        game.processInput(dt);
+
         
         //* Main Window Rendering
         game.update(dt);

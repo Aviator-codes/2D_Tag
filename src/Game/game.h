@@ -1,6 +1,7 @@
 #pragma once
 #include "../config.h"
 #include "../UI/ui.h"
+#include "../Entity/entity.h"
 #include "../Renderer/renderer.h"
 
 struct Game
@@ -10,11 +11,16 @@ struct Game
     void render();
     void renderDebugUI();
     void close();
-    void processInput();
+    void processInput(float dt);
+
+    glm::vec3 backgroundColor = {0.2f, 0.4f, 0.7f};
+
     UI ui;
     Shader shader; 
-    Texture tex;
+    std::vector<Texture> textures;
     Renderer2D renderer;
     
     uint VAO, VBO, EBO;
+
+    Player player;
 }; 
