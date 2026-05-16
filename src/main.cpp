@@ -16,7 +16,7 @@ int main(int argc, char** argv)
         last = current;
 
         // TODO: Inputs
-        game.processInput(dt);
+        game.processInput();
 
         
         //* Main Window Rendering

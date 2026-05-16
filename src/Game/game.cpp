@@ -15,22 +15,30 @@ void Game::init()
     player.tex = &textures[0];
     player.pos = {400, 50};
     player.texSize = 64;
-    player.hitbox.halfSize = {player.texSize / 2, player.texSize / 2};
+    player.hitbox.size = {player.texSize / 2, player.texSize / 2};
 }
 
+float fpsTimer = 0.0f;
+int fpsFrames = 0;
 void Game::update(float dt)
 {
+    // update frame rate
+    fpsTimer += dt;
+    fpsFrames++;
+    if(fpsTimer >= 0.25f)
+    {
+        fps = fpsFrames / fpsTimer;
+        fpsTimer = 0.0f;
+        fpsFrames = 0;
+    }
+
     // update position from velocity
     player.updatePos(dt);
     // accelerate due to gravity
     player.vel.y += g * dt;
 
-    // ground collision check
-    if(player.pos.y + player.hitbox.halfSize.y >= groundY)
-    {
-        player.pos.y = groundY - player.hitbox.halfSize.y;
-        player.vel.y = 0;
-    }
+    // screen collision check
+    player.screenCollision(windowSize);
 }
 
 void Game::render()
@@ -57,6 +65,12 @@ void Game::renderDebugUI()
     ImGui::Begin("Debug window");
     {
         ImGui::Text("Debug options");
+        ImGui::Text("FPS : %.2f ( %.5f ms )", fps, 1000.0f / std::max(fps, 0.001f));
+        if(ImGui::Checkbox("VSync", &vsync))
+        {
+            glfwSwapInterval(vsync ? 1 : 0);
+        }
+        ImGui::Separator();
         ImGui::ColorEdit3("Background", glm::value_ptr(backgroundColor));
         ImGui::Separator();
         ImGui::Checkbox("Show hitboxes", &viewHitboxes);
@@ -77,7 +91,7 @@ void Game::close()
 
 const float moveSpeed = 300.0f;
 bool pressedSpace = false;
-void Game::processInput(float dt)
+void Game::processInput()
 {
     player.vel.x = 0.0f;
 

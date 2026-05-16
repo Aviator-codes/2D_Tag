@@ -2,6 +2,8 @@
 
 const char* UI::WIN_NAME = "Window Name";
 
+glm::vec2 windowSize = {800, 600};
+
 void UI::init()
 {
     // glfw init
@@ -129,5 +131,7 @@ void glfwErrorCallback(int error, const char *description)
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
+    windowSize.x = width;
+    windowSize.y = height;
     glViewport(0, 0, width, height);
 } 

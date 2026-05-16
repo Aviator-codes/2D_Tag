@@ -4,7 +4,7 @@
 
 struct AABB
 {
-    glm::vec2 halfSize;
+    glm::vec2 size;
 };
 
 struct Player
@@ -19,4 +19,5 @@ struct Player
     float texSize;
 
     void updatePos(float dt);
+    void screenCollision(const glm::vec2& screenSize);
 };

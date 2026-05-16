@@ -15,4 +15,6 @@ struct UI
     void cleanup();
 };
 
+extern glm::vec2 windowSize;
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);  
